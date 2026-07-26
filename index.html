@@ -9,12 +9,12 @@
 <link rel="manifest" href='data:application/manifest+json,{"name":"%D8%AE%D8%A7%DB%B5%DB%8C%20%D8%AF%DB%86%D9%85%DB%8C%D9%86%DB%86","short_name":"%D8%AF%DB%86%D9%85%DB%8C%D9%86%DB%86","start_url":".","display":"standalone","background_color":"%23f3f4f6","theme_color":"%234a8ee6"}'>
 <style>
   :root{
-    --red-1:#e6544a;
-    --red-2:#c8382f;
-    --blue-1:#4a8ee6;
-    --blue-2:#2f6ac8;
-    --green-1:#3fae5a;
-    --green-2:#2f8f47;
+    --red-1:#e8564b;
+    --red-2:#d13a2f;
+    --blue-1:#4a90e2;
+    --blue-2:#2f6fd1;
+    --green-1:#4caf5f;
+    --green-2:#2e9e46;
     --bg:#f3f4f6;
     --card-bg:#ffffff;
     --text-dark:#1c1c1e;
@@ -101,8 +101,8 @@ cursor:pointer;
 transition:transform .08s ease, filter .15s ease;
 }
 .btn:active{transform:scale(0.93); filter:brightness(0.92);}
-.btn.plus{background:linear-gradient(180deg,var(–green-1),var(–green-2));}
-.btn.minus{background:linear-gradient(180deg,var(–red-1),var(–red-2));}
+.btn.plus{background-color:var(–green-1); background:linear-gradient(180deg,var(–green-1),var(–green-2));}
+.btn.minus{background-color:var(–red-1); background:linear-gradient(180deg,var(–red-1),var(–red-2));}
 
 .controls-row{
 display:flex;
@@ -130,8 +130,8 @@ gap:10px;
 border-radius:14px;
 padding:10px;
 }
-.row-panel.red{background:linear-gradient(180deg,var(–red-1),var(–red-2));}
-.row-panel.blue{background:linear-gradient(180deg,var(–blue-1),var(–blue-2));}
+.row-panel.red{background-color:var(–red-1); background:linear-gradient(180deg,var(–red-1),var(–red-2));}
+.row-panel.blue{background-color:var(–blue-1); background:linear-gradient(180deg,var(–blue-1),var(–blue-2));}
 .row-top{
 display:grid;
 grid-template-columns:repeat(4,1fr);
