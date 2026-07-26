@@ -1,417 +1,297 @@
 <!DOCTYPE html>
-
-<html lang="ku" dir="rtl">
+<html lang="ckb" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>ژمێرەری خاڵی دۆمینۆ</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='16' fill='%234a8ee6'/%3E%3Ccircle cx='32' cy='32' r='10' fill='%23e6544a'/%3E%3Ccircle cx='68' cy='32' r='10' fill='%23e6544a'/%3E%3Ccircle cx='32' cy='68' r='10' fill='%234a8ee6'/%3E%3Ccircle cx='68' cy='68' r='10' fill='%234a8ee6'/%3E%3Ccircle cx='50' cy='50' r='10' fill='%233a2a1a'/%3E%3C/svg%3E">
-<link rel="manifest" href='data:application/manifest+json,{"name":"%D8%AE%D8%A7%DB%B5%DB%8C%20%D8%AF%DB%86%D9%85%DB%8C%D9%86%DB%86","short_name":"%D8%AF%DB%86%D9%85%DB%8C%D9%86%DB%86","start_url":".","display":"standalone","background_color":"%23f3f4f6","theme_color":"%234a8ee6"}'>
-<style>
-  :root{
-    --red-1:#e8564b;
-    --red-2:#d13a2f;
-    --blue-1:#4a90e2;
-    --blue-2:#2f6fd1;
-    --green-1:#4caf5f;
-    --green-2:#2e9e46;
-    --bg:#f3f4f6;
-    --card-bg:#ffffff;
-    --text-dark:#1c1c1e;
-  }
-  *{box-sizing:border-box; -webkit-tap-highlight-color: transparent;}
-  html,body{
-    margin:0; padding:0;
-    background:var(--bg);
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color:var(--text-dark);
-    user-select:none;
-    overscroll-behavior:none;
-  }
-  .app{
-    max-width:520px;
-    margin:0 auto;
-    padding:14px 14px 40px;
-  }
-  header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:10px 4px 18px;
-  }
-  header h1{
-    font-size:20px;
-    margin:0;
-    text-align:center;
-    flex:1;
-  }
-  .icon-btn{
-    background:none;
-    border:none;
-    font-size:22px;
-    padding:6px 10px;
-    cursor:pointer;
-    color:var(--text-dark);
-  }
-  .brand{
-    text-align:center;
-    font-size:12px;
-    color:#8a8a8e;
-    margin-bottom:10px;
-    letter-spacing:0.5px;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ژماردنی خاڵەکانی دۆمینە</title>
+  
+  <!-- PWA Settings for Home Screen & Offline -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="دۆمینە">
+  
+  <!-- App Icon using Data URI SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232563eb'/><circle cx='30' cy='30' r='8' fill='white'/><circle cx='70' cy='70' r='8' fill='white'/><line x1='20' y1='80' x2='80' y2='20' stroke='white' stroke-width='6'/></svg>">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232563eb'/><circle cx='30' cy='30' r='8' fill='white'/><circle cx='70' cy='70' r='8' fill='white'/><line x1='20' y1='80' x2='80' y2='20' stroke='white' stroke-width='6'/></svg>">
 
-.scores{
-display:flex;
-gap:10px;
-margin-bottom:16px;
-}
-.score-box{
-flex:1;
-background:var(–card-bg);
-border:2px solid var(–red-1);
-border-radius:14px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:14px 16px;
-font-size:26px;
-font-weight:700;
-}
-.score-box.blue{border-color:var(–blue-1);}
-.player-name{
-font-size:16px;
-font-weight:600;
-background:transparent;
-border:none;
-text-align:center;
-color:var(–text-dark);
-width:55%;
-outline:none;
-}
+  <!-- Embedded Web Manifest for Web App Installation -->
+  <link rel="manifest" href='data:application/manifest+json,{"name":"ژماردنی خاڵەکانی دۆمینە","short_name":"دۆمینە","start_url":".","display":"standalone","background_color":"#f3f4f6","theme_color":"#2563eb","icons":[{"src":"data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><rect width=%27100%27 height=%27100%27 rx=%2720%27 fill=%27%232563eb%27/><circle cx=%2730%27 cy=%2730%27 r=%278%27 fill=%27white%27/><circle cx=%2770%27 cy=%2770%27 r=%278%27 fill=%27white%27/><line x1=%2720%27 y1=%2780%27 x2=%2780%27 y2=%2720%27 stroke=%27white%27 stroke-width=%276%27/></svg>","sizes":"512x512","type":"image/svg+xml"}]}'>
 
-.btn{
-border:none;
-border-radius:10px;
-padding:14px 0;
-font-size:16px;
-font-weight:700;
-color:#fff;
-cursor:pointer;
-transition:transform .08s ease, filter .15s ease;
-}
-.btn:active{transform:scale(0.93); filter:brightness(0.92);}
-.btn.plus{background-color:var(–green-1); background:linear-gradient(180deg,var(–green-1),var(–green-2));}
-.btn.minus{background-color:var(–red-1); background:linear-gradient(180deg,var(–red-1),var(–red-2));}
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      user-select: none;
+    }
 
-.controls-row{
-display:flex;
-gap:10px;
-margin-bottom:20px;
-}
-.controls-col{
-flex:1;
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:6px;
-}
+    body {
+      background-color: #f3f4f6;
+      color: #1f2937;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      padding: 15px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
 
-.board{
-display:flex;
-gap:10px;
-}
-.board-col{
-flex:1;
-display:flex;
-flex-direction:column;
-gap:10px;
-}
-.row-panel{
-border-radius:14px;
-padding:10px;
-}
-.row-panel.red{background-color:var(–red-1); background:linear-gradient(180deg,var(–red-1),var(–red-2));}
-.row-panel.blue{background-color:var(–blue-1); background:linear-gradient(180deg,var(–blue-1),var(–blue-2));}
-.row-top{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:6px;
-margin-bottom:8px;
-}
-.row-bottom{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:6px;
-}
-.cell-input{
-aspect-ratio:1/1;
-border-radius:8px;
-border:none;
-background:rgba(255,255,255,0.92);
-text-align:center;
-font-size:16px;
-font-weight:700;
-color:var(–text-dark);
-outline:none;
-width:100%;
-}
-.cell-dot{
-aspect-ratio:1/1;
-border-radius:50%;
-background:rgba(255,255,255,0.85);
-border:3px solid rgba(90,60,40,0.55);
-cursor:pointer;
-transition:background .15s ease, transform .1s ease;
-}
-.cell-dot.active{
-background:#3a2a1a;
-border-color:#3a2a1a;
-}
-.cell-dot:active{transform:scale(0.9);}
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #e5e7eb;
+      margin-bottom: 15px;
+    }
 
-.footer-actions{
-display:flex;
-justify-content:center;
-margin-top:22px;
-}
-.reset-btn{
-background:#3a3a3c;
-color:#fff;
-border:none;
-border-radius:12px;
-padding:12px 26px;
-font-size:15px;
-font-weight:600;
-cursor:pointer;
-}
-.reset-btn:active{filter:brightness(1.2);}
+    .title {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
 
-.group-reset-row{
-flex:1;
-display:flex;
-justify-content:center;
-}
-.group-reset-btn{
-width:100%;
-background:rgba(0,0,0,0.28);
-color:#fff;
-border:none;
-border-radius:8px;
-padding:8px 0;
-font-size:13px;
-font-weight:600;
-cursor:pointer;
-}
-.group-reset-btn:active{background:rgba(0,0,0,0.45);}
+    .reset-btn {
+      background-color: #ef4444;
+      color: white;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
 
-body.dark{
-–bg:#101014;
-–card-bg:#1c1c1e;
-–text-dark:#f2f2f2;
-}
-body.dark .icon-btn{color:#f2f2f2;}
-body.dark .cell-input{background:rgba(255,255,255,0.85);}
-</style>
+    .reset-btn:active {
+      transform: scale(0.95);
+    }
 
+    .game-board {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      flex-grow: 1;
+    }
+
+    .team-column {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .score-card {
+      background: white;
+      border-radius: 12px;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      border: 2px solid #e5e7eb;
+    }
+
+    .team-1 .score-card { border-color: #ef4444; }
+    .team-2 .score-card { border-color: #3b82f6; }
+
+    .team-name {
+      font-weight: bold;
+      font-size: 1.1rem;
+      border: none;
+      outline: none;
+      background: transparent;
+      width: 60%;
+      text-align: center;
+    }
+
+    .total-score {
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 4px;
+    }
+
+    .score-btn {
+      flex: 1;
+      padding: 8px 0;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .score-btn:active {
+      transform: scale(0.95);
+    }
+
+    .btn-plus { background-color: #22c55e; }
+    .btn-minus { background-color: #ef4444; }
+
+    .domino-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 5px;
+    }
+
+    .domino-block {
+      border-radius: 12px;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .team-1 .domino-block { background-color: #ef4444; }
+    .team-2 .domino-block { background-color: #3b82f6; }
+
+    .domino-row {
+      display: flex;
+      gap: 6px;
+      justify-content: space-between;
+    }
+
+    .square {
+      background: white;
+      border-radius: 6px;
+      flex: 1;
+      height: 30px;
+    }
+
+    .circle {
+      background: #d1d5db;
+      border: 3px solid #78350f;
+      border-radius: 50%;
+      flex: 1;
+      height: 30px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 20px;
+      padding-top: 10px;
+      font-size: 0.85rem;
+      color: #6b7280;
+      border-top: 1px solid #e5e7eb;
+    }
+  </style>
 </head>
 <body>
-<div class="app">
+
   <header>
-    <button class="icon-btn" onclick="toggleDark()">🌙</button>
-    <h1>ژمێرەری خاڵی دۆمینۆ</h1>
-    <button class="icon-btn" onclick="history.back()">‹</button>
+    <div class="title">ژماردنی خاڵەکان</div>
+    <button class="reset-btn" onclick="resetGame()">سفرکردنەوە</button>
   </header>
-  <div class="brand">دروستکراوە لەلایەن mam pola</div>
 
-  <div class="scores">
-    <div class="score-box">
-      <span id="score1">0</span>
-      <input class="player-name" id="name1" value="محمد">
-    </div>
-    <div class="score-box blue">
-      <span id="score2">0</span>
-      <input class="player-name" id="name2" value="ئەحمەد">
-    </div>
-  </div>
+  <div class="game-board">
+    <!-- Team 1 -->
+    <div class="team-column team-1">
+      <div class="score-card">
+        <span class="total-score" id="score1">0</span>
+        <input type="text" class="team-name" value="محمد" id="name1">
+      </div>
+      
+      <div class="btn-group">
+        <button class="score-btn btn-plus" onclick="addScore(1, 5)">+ 5</button>
+        <button class="score-btn btn-plus" onclick="addScore(1, 10)">+ 10</button>
+        <button class="score-btn btn-minus" onclick="addScore(1, -5)">- 5</button>
+        <button class="score-btn btn-minus" onclick="addScore(1, -10)">- 10</button>
+      </div>
 
-  <div class="controls-row">
-    <div class="controls-col">
-      <button class="btn minus" onclick="addScore(1,-10)">-10</button>
-      <button class="btn minus" onclick="addScore(1,-5)">-5</button>
-      <button class="btn plus" onclick="addScore(1,10)">+10</button>
-      <button class="btn plus" onclick="addScore(1,5)">+5</button>
+      <div class="domino-grid" id="grid1"></div>
     </div>
-    <div class="controls-col">
-      <button class="btn minus" onclick="addScore(2,-10)">-10</button>
-      <button class="btn minus" onclick="addScore(2,-5)">-5</button>
-      <button class="btn plus" onclick="addScore(2,10)">+10</button>
-      <button class="btn plus" onclick="addScore(2,5)">+5</button>
-    </div>
-  </div>
 
-  <div class="board" id="board"></div>
+    <!-- Team 2 -->
+    <div class="team-column team-2">
+      <div class="score-card">
+        <span class="total-score" id="score2">0</span>
+        <input type="text" class="team-name" value="احمد" id="name2">
+      </div>
 
-  <div class="controls-row" style="margin-top:2px;">
-    <div class="group-reset-row">
-      <button class="group-reset-btn" onclick="resetGroup(1)">سفرکردنەوەی <span id="resetName1">محمد</span></button>
-    </div>
-    <div class="group-reset-row">
-      <button class="group-reset-btn" onclick="resetGroup(2)">سفرکردنەوەی <span id="resetName2">ئەحمەد</span></button>
+      <div class="btn-group">
+        <button class="score-btn btn-plus" onclick="addScore(2, 5)">+ 5</button>
+        <button class="score-btn btn-plus" onclick="addScore(2, 10)">+ 10</button>
+        <button class="score-btn btn-minus" onclick="addScore(2, -5)">- 5</button>
+        <button class="score-btn btn-minus" onclick="addScore(2, -10)">- 10</button>
+      </div>
+
+      <div class="domino-grid" id="grid2"></div>
     </div>
   </div>
 
-  <div class="footer-actions">
-    <button class="reset-btn" onclick="resetAll()">سفرکردنەوەی گشتی</button>
-  </div>
-</div>
+  <footer>
+    دروستکراوە لەلایەن pola
+  </footer>
 
-<script>
-const ROWS = 8;
-const COLS = 4;
-let state = {
-  score1:0, score2:0,
-  name1:"محمد", name2:"ئەحمەد",
-  cells1: Array.from({length:ROWS},()=>({vals:["","","",""], dots:[false,false,false,false]})),
-  cells2: Array.from({length:ROWS},()=>({vals:["","","",""], dots:[false,false,false,false]})),
-  dark:false
-};
+  <script>
+    let scores = { 1: 0, 2: 0 };
 
-function save(){
-  try{ localStorage.setItem('dominoState', JSON.stringify(state)); }catch(e){}
-}
-function load(){
-  try{
-    const s = localStorage.getItem('dominoState');
-    if(s){ state = Object.assign(state, JSON.parse(s)); }
-  }catch(e){}
-}
+    function addScore(team, value) {
+      scores[team] += value;
+      if (scores[team] < 0) scores[team] = 0;
+      document.getElementById(`score${team}`).innerText = scores[team];
+    }
 
-function addScore(player, amount){
-  if(player===1){ state.score1 += amount; if(state.score1<0) state.score1=0; }
-  else { state.score2 += amount; if(state.score2<0) state.score2=0; }
-  render();
-  save();
-}
+    function resetGame() {
+      if (confirm('دڵنیایت لە سفرکردنەوەی خاڵەکان؟')) {
+        scores = { 1: 0, 2: 0 };
+        document.getElementById('score1').innerText = '0';
+        document.getElementById('score2').innerText = '0';
+      }
+    }
 
-function resetAll(){
-  if(!confirm("دڵنیایت لە سفرکردنەوەی هەموو خاڵەکان؟")) return;
-  state.score1=0; state.score2=0;
-  state.cells1 = Array.from({length:ROWS},()=>({vals:["","","",""], dots:[false,false,false,false]}));
-  state.cells2 = Array.from({length:ROWS},()=>({vals:["","","",""], dots:[false,false,false,false]}));
-  buildBoard();
-  render();
-  save();
-}
+    // Render decorative domino blocks like image
+    function renderBlocks() {
+      const createBlock = () => `
+        <div class="domino-block">
+          <div class="domino-row">
+            <div class="square"></div><div class="square"></div><div class="square"></div><div class="square"></div>
+          </div>
+          <div class="domino-row">
+            <div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div>
+          </div>
+        </div>
+      `;
 
-function resetGroup(player){
-  const pname = player===1 ? state.name1 : state.name2;
-  if(!confirm("دڵنیایت لە سفرکردنەوەی خاڵەکانی " + pname + "؟")) return;
-  if(player===1){
-    state.score1 = 0;
-    state.cells1 = Array.from({length:ROWS},()=>({vals:["","","",""], dots:[false,false,false,false]}));
-  } else {
-    state.score2 = 0;
-    state.cells2 = Array.from({length:ROWS},()=>({vals:["","","",""], dots:[false,false,false,false]}));
-  }
-  buildBoard();
-  render();
-  save();
-}
+      let blocksHTML = '';
+      for (let i = 0; i < 5; i++) {
+        blocksHTML += createBlock();
+      }
 
-function toggleDark(){
-  state.dark = !state.dark;
-  document.body.classList.toggle('dark', state.dark);
-  save();
-}
+      document.getElementById('grid1').innerHTML = blocksHTML;
+      document.getElementById('grid2').innerHTML = blocksHTML;
+    }
 
-function buildBoard(){
-  const board = document.getElementById('board');
-  board.innerHTML = "";
-  const col1 = document.createElement('div');
-  col1.className = 'board-col';
-  const col2 = document.createElement('div');
-  col2.className = 'board-col';
+    renderBlocks();
 
-  for(let r=0;r<ROWS;r++){
-    col1.appendChild(makeRowPanel('red', 1, r));
-    col2.appendChild(makeRowPanel('blue', 2, r));
-  }
-  board.appendChild(col1);
-  board.appendChild(col2);
-}
-
-function makeRowPanel(color, player, rowIndex){
-  const panel = document.createElement('div');
-  panel.className = 'row-panel ' + color;
-
-  const top = document.createElement('div');
-  top.className = 'row-top';
-  const bottom = document.createElement('div');
-  bottom.className = 'row-bottom';
-
-  for(let c=0;c<COLS;c++){
-    const input = document.createElement('input');
-    input.className = 'cell-input';
-    input.maxLength = 2;
-    input.inputMode = 'numeric';
-    const key = player===1?'cells1':'cells2';
-    input.value = state[key][rowIndex].vals[c];
-    input.addEventListener('input', (e)=>{
-      let v = e.target.value.replace(/[^0-9]/g,'');
-      state[key][rowIndex].vals[c] = v;
-      e.target.value = v;
-      save();
-    });
-    top.appendChild(input);
-
-    const dot = document.createElement('div');
-    dot.className = 'cell-dot' + (state[key][rowIndex].dots[c] ? ' active' : '');
-    dot.addEventListener('click', ()=>{
-      state[key][rowIndex].dots[c] = !state[key][rowIndex].dots[c];
-      dot.classList.toggle('active');
-      save();
-    });
-    bottom.appendChild(dot);
-  }
-  panel.appendChild(top);
-  panel.appendChild(bottom);
-  return panel;
-}
-
-function render(){
-  document.getElementById('score1').textContent = state.score1;
-  document.getElementById('score2').textContent = state.score2;
-  document.getElementById('name1').value = state.name1;
-  document.getElementById('name2').value = state.name2;
-  document.getElementById('resetName1').textContent = state.name1;
-  document.getElementById('resetName2').textContent = state.name2;
-  document.body.classList.toggle('dark', state.dark);
-}
-
-document.getElementById('name1').addEventListener('input', e=>{
-  state.name1 = e.target.value;
-  document.getElementById('resetName1').textContent = state.name1;
-  save();
-});
-document.getElementById('name2').addEventListener('input', e=>{
-  state.name2 = e.target.value;
-  document.getElementById('resetName2').textContent = state.name2;
-  save();
-});
-
-load();
-buildBoard();
-render();
-
-// ---- Offline note ----
-// This is a single self-contained HTML file with no external requests
-// (no external CSS, fonts, images, or scripts). Once the page has loaded
-// once, opening the same saved/downloaded file again works fully offline,
-// and all scores are saved locally on the device via localStorage.
-// For best results on mobile, use the browser's "Add to Home Screen"
-// option after opening this file once.
-
-</script>
-
+    // Register Service Worker from Inline Data URI for Offline Capabilities
+    if ('serviceWorker' in navigator) {
+      const swCode = `
+        const CACHE_NAME = 'domino-v1';
+        self.addEventListener('install', (e) => {
+          e.waitUntil(
+            caches.open(CACHE_NAME).then((cache) => cache.addAll(['./']))
+          );
+        });
+        self.addEventListener('fetch', (e) => {
+          e.respondWith(
+            caches.match(e.request).then((res) => res || fetch(e.request))
+          );
+        });
+      `;
+      const blob = new Blob([swCode], { type: 'application/javascript' });
+      const swUrl = URL.createObjectURL(blob);
+      navigator.serviceWorker.register(swUrl).catch(() => {});
+    }
+  </script>
 </body>
 </html>
