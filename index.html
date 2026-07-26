@@ -2,21 +2,16 @@
 <html lang="ckb" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <!-- ڕێگری بە تەواوی لە Zoom/Scale کردنی شاشە -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>ژماردنی خاڵەکانی دۆمینە</title>
   
-  <!-- PWA Settings for Home Screen & Offline -->
   <meta name="theme-color" content="#2563eb">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="دۆمینە">
   
-  <!-- App Icon using Data URI SVG -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232563eb'/><circle cx='30' cy='30' r='8' fill='white'/><circle cx='70' cy='70' r='8' fill='white'/><line x1='20' y1='80' x2='80' y2='20' stroke='white' stroke-width='6'/></svg>">
   <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232563eb'/><circle cx='30' cy='30' r='8' fill='white'/><circle cx='70' cy='70' r='8' fill='white'/><line x1='20' y1='80' x2='80' y2='20' stroke='white' stroke-width='6'/></svg>">
-
-  <!-- Embedded Web Manifest for Web App Installation -->
   <link rel="manifest" href='data:application/manifest+json,{"name":"ژماردنی خاڵەکانی دۆمینە","short_name":"دۆمینە","start_url":".","display":"standalone","background_color":"#f3f4f6","theme_color":"#2563eb","icons":[{"src":"data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><rect width=%27100%27 height=%27100%27 rx=%2720%27 fill=%27%232563eb%27/><circle cx=%2730%27 cy=%2730%27 r=%278%27 fill=%27white%27/><circle cx=%2770%27 cy=%2770%27 r=%278%27 fill=%27white%27/><line x1=%2720%27 y1=%2780%27 x2=%2780%27 y2=%2720%27 stroke=%27white%27 stroke-width=%276%27/></svg>","sizes":"512x512","type":"image/svg+xml"}]}'>
 
   <style>
@@ -26,7 +21,6 @@
       padding: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       user-select: none;
-      /* ڕێگری لە زومکردن لە کاتی دابڕین لە سەر دوگمەکان (Double tap zoom) */
       touch-action: manipulation;
     }
 
@@ -36,7 +30,7 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-      padding: 15px;
+      padding: 12px;
       max-width: 500px;
       margin: 0 auto;
     }
@@ -45,13 +39,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-bottom: 15px;
-      border-bottom: 2px solid #e5e7eb;
-      margin-bottom: 15px;
+      padding-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .title {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: bold;
     }
 
@@ -63,7 +56,6 @@
       border-radius: 8px;
       font-weight: bold;
       cursor: pointer;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
     .reset-btn:active {
@@ -73,20 +65,20 @@
     .game-board {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      gap: 10px;
       flex-grow: 1;
     }
 
     .team-column {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
     }
 
     .score-card {
       background: white;
       border-radius: 12px;
-      padding: 10px;
+      padding: 8px 12px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -99,7 +91,7 @@
 
     .team-name {
       font-weight: bold;
-      font-size: 1.1rem; /* font size 16px یان زیاتر بێت ڕێگری لە zoom ئۆتۆماتیکی ئایفۆن دەکات */
+      font-size: 1.1rem;
       border: none;
       outline: none;
       background: transparent;
@@ -124,12 +116,8 @@
       border-radius: 8px;
       color: white;
       font-weight: bold;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
     .score-btn:active {
@@ -142,13 +130,12 @@
     .domino-grid {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      margin-top: 5px;
+      gap: 6px;
     }
 
     .domino-block {
       border-radius: 12px;
-      padding: 8px;
+      padding: 6px;
       display: flex;
       flex-direction: column;
       gap: 6px;
@@ -164,43 +151,57 @@
     }
 
     .square {
-      background: white;
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid white;
       border-radius: 6px;
       flex: 1;
-      height: 30px;
+      height: 28px;
+      transition: background-color 0.2s;
+    }
+
+    .square.active {
+      background: white;
     }
 
     .circle {
-      background: #d1d5db;
-      border: 3px solid #78350f;
+      background: #9ca3af;
+      border: 2px solid #ffffff;
       border-radius: 50%;
       flex: 1;
-      height: 30px;
+      height: 28px;
+      transition: background-color 0.2s;
+    }
+
+    .circle.active {
+      background: white;
     }
 
     footer {
       text-align: center;
-      margin-top: 20px;
-      padding-top: 10px;
-      font-size: 0.85rem;
-      color: #6b7280;
-      border-top: 1px solid #e5e7eb;
+      margin-top: 15px;
+      padding: 10px 0;
+      font-size: 0.95rem;
+      font-weight: bold;
+      color: #374151;
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="title">ژماردنی خاڵەکان</div>
     <button class="reset-btn" onclick="resetGame()">سفرکردنەوە</button>
+    <div class="title">ژماردنی خاڵەکان</div>
   </header>
 
   <div class="game-board">
     <!-- Team 1 -->
     <div class="team-column team-1">
       <div class="score-card">
-        <span class="total-score" id="score1">0</span>
         <input type="text" class="team-name" value="محمد" id="name1">
+        <span class="total-score" id="score1">0</span>
       </div>
       
       <div class="btn-group">
@@ -216,8 +217,8 @@
     <!-- Team 2 -->
     <div class="team-column team-2">
       <div class="score-card">
-        <span class="total-score" id="score2">0</span>
         <input type="text" class="team-name" value="احمد" id="name2">
+        <span class="total-score" id="score2">0</span>
       </div>
 
       <div class="btn-group">
@@ -242,6 +243,7 @@
       scores[team] += value;
       if (scores[team] < 0) scores[team] = 0;
       document.getElementById(`score${team}`).innerText = scores[team];
+      updateVisuals(team);
     }
 
     function resetGame() {
@@ -249,37 +251,77 @@
         scores = { 1: 0, 2: 0 };
         document.getElementById('score1').innerText = '0';
         document.getElementById('score2').innerText = '0';
+        updateVisuals(1);
+        updateVisuals(2);
       }
     }
 
-    // Render decorative domino blocks
-    function renderBlocks() {
-      const createBlock = () => `
-        <div class="domino-block">
-          <div class="domino-row">
-            <div class="square"></div><div class="square"></div><div class="square"></div><div class="square"></div>
-          </div>
-          <div class="domino-row">
-            <div class="circle"></div><div class="circle"></div><div class="circle"></div><div class="circle"></div>
-          </div>
-        </div>
-      `;
+    function createBoard(teamId) {
+      const grid = document.getElementById(`grid${teamId}`);
+      grid.innerHTML = '';
+      for (let blockIdx = 0; blockIdx < 5; blockIdx++) {
+        const block = document.createElement('div');
+        block.className = 'domino-block';
+        
+        const squareRow = document.createElement('div');
+        squareRow.className = 'domino-row';
+        for (let i = 0; i < 4; i++) {
+          const sq = document.createElement('div');
+          sq.className = 'square';
+          sq.id = `sq-${teamId}-${blockIdx * 4 + i}`;
+          squareRow.appendChild(sq);
+        }
 
-      let blocksHTML = '';
-      for (let i = 0; i < 5; i++) {
-        blocksHTML += createBlock();
+        const circleRow = document.createElement('div');
+        circleRow.className = 'domino-row';
+        for (let i = 0; i < 4; i++) {
+          const cr = document.createElement('div');
+          cr.className = 'circle';
+          cr.id = `cr-${teamId}-${blockIdx * 4 + i}`;
+          circleRow.appendChild(cr);
+        }
+
+        block.appendChild(squareRow);
+        block.appendChild(circleRow);
+        grid.appendChild(block);
       }
-
-      document.getElementById('grid1').innerHTML = blocksHTML;
-      document.getElementById('grid2').innerHTML = blocksHTML;
     }
 
-    renderBlocks();
+    function updateVisuals(team) {
+      const currentScore = scores[team];
+      
+      // Calculate how many 10s (squares) and 5s (circles)
+      const numTens = Math.floor(currentScore / 10);
+      const hasFive = (currentScore % 10) >= 5;
 
-    // Register Service Worker for Offline Capabilities
+      for (let i = 0; i < 20; i++) {
+        const sq = document.getElementById(`sq-${team}-${i}`);
+        const cr = document.getElementById(`cr-${team}-${i}`);
+        
+        if (sq) {
+          if (i < numTens) {
+            sq.classList.add('active');
+          } else {
+            sq.classList.remove('active');
+          }
+        }
+
+        if (cr) {
+          if (i < numTens || (i === numTens && hasFive)) {
+            cr.classList.add('active');
+          } else {
+            cr.classList.remove('active');
+          }
+        }
+      }
+    }
+
+    createBoard(1);
+    createBoard(2);
+
     if ('serviceWorker' in navigator) {
       const swCode = `
-        const CACHE_NAME = 'domino-v2';
+        const CACHE_NAME = 'domino-v3';
         self.addEventListener('install', (e) => {
           e.waitUntil(
             caches.open(CACHE_NAME).then((cache) => cache.addAll(['./']))
